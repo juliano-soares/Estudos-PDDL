@@ -1,7 +1,7 @@
-(define (domain autonomous_bt)
+(define (domain movimentacao)
 
 ;remove requirements that are not needed
-(:requirements :strips :fluents :durative-actions :timed-initial-literals :typing :conditional-effects :negative-preconditions :duration-inequalities :equality)
+(:requirements :strips :fluents :negative-preconditions :equality)
 
 ; ---------TYPES------------
 ;(:types)
@@ -11,39 +11,39 @@
 
 ; ------PREDICATES----------
 (:predicates ;todo: define predicates here
-    (vehicle ?vt)
-    (soldier ?sd)
+    (vehicle ?vehicle)
+    (agent ?agent)
     (mobile ?thing)
     (at ?thing ?location)
-    (driving ?sd ?vt)
+    (driving ?agent ?vehicle)
 )
 
 ; -------FUNCTIONS----------
 ;(:functions)
 
 ; --------ACTIONS-----------
-;Embarca um soldado no vaiculo
+;Embarca um agente no vaiculo
 (:action Embarcar
-    :parameters (?soldier ?vehicle ?place)
+    :parameters (?agent ?vehicle ?place)
     :precondition 
     (and 
-        (soldier ?soldier) ;Tem soldado
+        (agent ?agent) ;Tem agente
         (vehicle ?vehicle) ;Tem veiculo
         (at ?vehicle ?place) ;Veiculo esta no local
-        (at ?soldier ?place) ;Soldado esta no logal
+        (at ?agent ?place) ;agente esta no logal
         (not (mobile ?vehicle)) ;Veiculo não pode se mover
     )
     :effect ;Se as pré-condições estão ok vai causar que
     (and 
-        (driving ?soldier ?vehicle) ;O soldado esta dirigindo
+        (driving ?agent ?vehicle) ;O agente esta dirigindo
         (mobile ?vehicle) ;Veiculo pode se mover
-        (not (at ?soldier ?place)) ;Soldado não esta no local
-        (not (mobile ?soldier))  ;Soldado não pode se mover
+        (not (at ?agent ?place)) ;agente não esta no local
+        (not (mobile ?agent))  ;agente não pode se mover
     )
 )
 
 ;Desloca um veiculo a uma posição
-(:action DeslocarPara
+(:action Deslocar
     :parameters (?thing ?from ?to)
     :precondition 
     (and 
