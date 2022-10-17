@@ -1,7 +1,7 @@
 # PDDL-Estudos
 Repositório para armazenar estudos sobre a linguagem PDDL
 
-[LINK APRESENTAÇÂO](https://www.notion.so/PDDl-Planning-Domain-Language-6baef8a9bec74e579faaea44db3cebcd)
+[LINK APRESENTAÇÂO](https://brick-exception-5ac.notion.site/PDDl-Planning-Domain-Definition-Language-6baef8a9bec74e579faaea44db3cebcd)
 
 ### Software Online
 [Site com programa para praticar](http://planning.domains/)
